@@ -1,0 +1,216 @@
+:root {
+  --primario: #0284c7;
+  --primario-oscuro: #0369a1;
+  --secundario: #e0f2fe;
+  --oscuro: #0f172a;
+  --claro: #ffffff;
+  --gris: #64748b;
+  --sombra: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--oscuro);
+  background: #f8fafc;
+}
+
+/* Encabezado personalizado */
+.encabezado {
+  min-height: 220px;
+  padding: 40px 8%;
+  display: flex;
+  align-items: center;
+  color: var(--claro);
+  background: linear-gradient(135deg, #0f172a, #0284c7);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.encabezado h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.contenedor {
+  width: min(1100px, 90%);
+  margin: 30px auto;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.panel h2 {
+  margin: 0 0 5px 0;
+}
+
+#contador {
+  margin: 0;
+  color: var(--gris);
+  font-weight: 500;
+}
+
+/* Buscador y Ordenamiento */
+.herramientas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#buscador {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#buscador:focus {
+  border-color: var(--primario);
+}
+
+.btn-orden {
+  background: var(--secundario);
+  color: var(--primario-oscuro);
+  border: 1px solid var(--primario);
+}
+
+.btn-orden:hover {
+  background: var(--primario);
+  color: var(--claro);
+}
+
+/* Botones de filtros */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button {
+  padding: 10px 18px;
+  border: 1px solid var(--primario);
+  border-radius: 20px;
+  background: var(--claro);
+  color: var(--primario);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover,
+button.activo {
+  background: var(--primario);
+  color: var(--claro);
+}
+
+/* Grilla del Catálogo */
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* Mensaje cuando no hay resultados */
+.sin-resultados {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  background: var(--claro);
+  border-radius: 14px;
+  color: var(--gris);
+  font-size: 1.2rem;
+  box-shadow: var(--sombra);
+}
+
+/* Diseño personalizado de Tarjetas */
+.tarjeta {
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--claro);
+  box-shadow: var(--sombra);
+  transition: transform 0.25s, box-shadow 0.25s;
+  border: 1px solid #e2e8f0;
+}
+
+.tarjeta:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.imagen {
+  min-height: 140px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, var(--secundario), #ffffff);
+  font-size: 3.8rem;
+}
+
+.informacion {
+  padding: 20px;
+}
+
+.etiqueta {
+  display: inline-block;
+  color: var(--primario-oscuro);
+  background: var(--secundario);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.informacion h3 {
+  margin: 6px 0;
+  font-size: 1.2rem;
+}
+
+.precio {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--oscuro);
+  margin: 10px 0 0 0;
+}
+
+footer {
+  padding: 24px;
+  text-align: center;
+  color: var(--claro);
+  background: var(--oscuro);
+  margin-top: 50px;
+}
+
+/* Adaptabilidad Responsiva (3 cols -> 2 cols -> 1 col) */
+@media (max-width: 850px) {
+  .catalogo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .catalogo {
+    grid-template-columns: 1fr;
+  }
+  .encabezado {
+    min-height: 180px;
+    padding: 30px 5%;
+  }
+  .filtros button {
+    flex: 1 1 calc(50% - 8px);
+  }
+  .herramientas {
+    flex-direction: column;
+  }
+}

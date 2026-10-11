@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explora Riviera Maya</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="encabezado">
+        <div>
+            <h1>Explora Riviera Maya</h1>
+            <p>Experiencias naturales, culturales y gastronómicas</p>
+        </div>
+    </header>
+
+    <main class="contenedor">
+        <!-- Panel de Filtros y Búsqueda -->
+        <section class="panel">
+            <div>
+                <h2>Experiencias disponibles</h2>
+                <p id="contador">0 experiencias encontradas</p>
+            </div>
+            
+            <div class="herramientas">
+                <!-- Buscador por nombre -->
+                <input type="text" id="buscador" placeholder="Buscar por nombre..." aria-label="Buscar experiencias">
+                
+                <!-- Filtro de Precio Máximo -->
+                <div class="filtro-precio">
+                    <label for="rango-precio">Precio máx: $<span id="val-precio">1000</span> MXN</label>
+                    <input type="range" id="rango-precio" min="0" max="1000" step="50" value="1000">
+                </div>
+            </div>
+
+            <!-- Botones de Categorías -->
+            <div class="filtros" aria-label="Filtros del catálogo">
+                <button class="activo" data-categoria="todas">Todas</button>
+                <button data-categoria="naturaleza">Naturaleza</button>
+                <button data-categoria="cultura">Cultura</button>
+                <button data-categoria="aventura">Aventura</button>
+                <button data-categoria="gastronomia">Gastronomía</button>
+            </div>
+        </section>
+
+        <!-- Layout en dos columnas: Catálogo y Reservación -->
+        <div class="layout-principal">
+            <!-- Catálogo de Tarjetas -->
+            <section id="catalogo" class="catalogo"></section>
+
+            <!-- Sección Mi Reservación -->
+            <aside class="panel-reservacion" aria-label="Sección de reservación">
+                <h2>Mi Reservación</h2>
+                <div id="lista-reservaciones" class="lista-reservaciones">
+                    <p class="reserva-vacia">No has agregado experiencias.</p>
+                </div>
+
+                <div class="resumen-reservacion">
+                    <p>Total personas: <strong id="total-personas">0</strong></p>
+                    <p>Importe total: <strong id="total-importe">$0 MXN</strong></p>
+                    
+                    <button id="btn-vaciar" class="btn-vaciar" disabled>Vaciar reservación</button>
+                </div>
+
+                <!-- Mensaje de confirmación en pantalla (sin alert) -->
+                <div id="mensaje-confirmacion" class="mensaje-confirmacion oculta">
+                    <p>¿Estás seguro de que deseas vaciar tu reservación?</p>
+                    <div class="acciones-confirmacion">
+                        <button id="btn-confirmar-si" class="btn-confirmar">Sí, vaciar</button>
+                        <button id="btn-confirmar-no" class="btn-cancelar">Cancelar</button>
+                    </div>
+                </div>
+
+                <!-- Notificación en pantalla -->
+                <div id="notificacion" class="notificacion oculta"></div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <p>Proyecto académico de desarrollo front-end</p>
+    </footer>
+</body>
+</html>
